@@ -41,12 +41,14 @@ function CrudTable() {
    * Preenche a tabela com a lista de usuários cadastrados
    */
   useEffect(() => {
+    setLoading(true);
     updateListUsers();
   }, []);
 
   async function updateListUsers() {
     let response = await axios(`${process.env.REACT_APP_API}/users/all`);
     setUsers(response.data);
+    setLoading(false);
   }
 
   //Hadles:
